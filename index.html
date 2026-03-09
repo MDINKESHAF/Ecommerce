@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Studio Trend</title>
 
 <style>
 
-/* ===== RESET ===== */
+/* ===== GLOBAL ===== */
 
 *{
 margin:0;
@@ -19,7 +20,6 @@ font-family:Arial, Helvetica, sans-serif;
 body{
 background:#050b18;
 color:white;
-line-height:1.6;
 }
 
 /* ===== NAVBAR ===== */
@@ -28,7 +28,7 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 20px;
+padding:15px 8%;
 background:#020617;
 position:sticky;
 top:0;
@@ -36,96 +36,147 @@ z-index:1000;
 }
 
 .logo{
-font-size:20px;
+font-size:22px;
 font-weight:bold;
 color:#3b82f6;
 }
 
 .nav-links{
 display:flex;
-gap:20px;
+gap:25px;
 }
 
 .nav-links a{
 text-decoration:none;
 color:white;
-font-size:14px;
 }
 
 .cart-btn{
 background:#2563eb;
-padding:6px 12px;
+padding:8px 14px;
 border-radius:5px;
 cursor:pointer;
-font-size:14px;
 }
 
 /* ===== HERO ===== */
 
 .hero{
-padding:60px 20px;
-text-align:center;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 8%;
 background:linear-gradient(120deg,#020617,#0f172a);
+flex-wrap:wrap;
 }
 
-.hero h1{
-font-size:32px;
-margin-bottom:10px;
+.hero-text{
+max-width:500px;
 }
 
-.hero p{
-color:#cbd5f5;
+.hero-text h1{
+font-size:50px;
 margin-bottom:15px;
 }
 
-.hero button{
+.hero-text p{
+color:#cbd5f5;
+margin-bottom:20px;
+}
+
+.hero-text button{
+padding:12px 28px;
 background:#2563eb;
 border:none;
-padding:10px 20px;
 color:white;
 border-radius:6px;
 cursor:pointer;
+}
+
+.hero img{
+width:420px;
+max-width:100%;
+}
+
+/* ===== FEATURES ===== */
+
+.features{
+padding:70px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+text-align:center;
+}
+
+.feature{
+background:#020617;
+padding:25px;
+border-radius:10px;
+}
+
+.feature h3{
+margin-bottom:10px;
+color:#3b82f6;
+}
+
+/* ===== CATEGORIES ===== */
+
+.categories{
+padding:70px 8%;
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.category{
+background:#020617;
+border-radius:10px;
+overflow:hidden;
+text-align:center;
+}
+
+.category img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.category h3{
+padding:10px;
 }
 
 /* ===== PRODUCTS ===== */
 
-section{
-padding:40px 20px;
+.products-section{
+padding:70px 8%;
 }
 
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
 }
 
 .product{
 background:#020617;
+padding:15px;
 border-radius:10px;
-padding:10px;
 }
 
 .product img{
 width:100%;
-height:140px;
+height:160px;
 object-fit:cover;
 border-radius:6px;
 }
 
-.product h3{
-font-size:14px;
-margin:8px 0;
-}
-
-.product p{
-font-size:13px;
-color:#cbd5f5;
-}
-
 .product button{
-margin-top:8px;
 width:100%;
-padding:6px;
+margin-top:8px;
+padding:8px;
 background:#2563eb;
 border:none;
 color:white;
@@ -133,58 +184,46 @@ border-radius:4px;
 cursor:pointer;
 }
 
-/* ===== CART ===== */
+/* ===== NEWSLETTER ===== */
 
-.cart{
-position:fixed;
-right:-100%;
-top:0;
-width:260px;
-height:100%;
+.newsletter{
+padding:70px 8%;
+text-align:center;
 background:#020617;
-padding:20px;
-transition:.3s;
-overflow:auto;
 }
 
-.cart.active{
-right:0;
-}
-
-.cart-item{
-display:flex;
-justify-content:space-between;
-background:#0f172a;
-padding:6px;
-margin:8px 0;
+.newsletter input{
+padding:10px;
+width:250px;
+border:none;
 border-radius:4px;
-font-size:13px;
+margin-right:10px;
 }
 
-.cart-item button{
-background:red;
+.newsletter button{
+padding:10px 18px;
+background:#2563eb;
 border:none;
 color:white;
-cursor:pointer;
+border-radius:4px;
 }
 
 /* ===== FOOTER ===== */
 
 footer{
 background:#020617;
-padding:30px 20px;
+padding:40px 8%;
 margin-top:40px;
 }
 
 .footer-grid{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
 }
 
 .footer-col h3{
-font-size:16px;
-margin-bottom:8px;
+margin-bottom:10px;
 color:#3b82f6;
 }
 
@@ -192,31 +231,37 @@ color:#3b82f6;
 display:block;
 text-decoration:none;
 color:#ccc;
-font-size:13px;
-margin-bottom:4px;
+margin-bottom:5px;
+font-size:14px;
 }
 
 .footer-bottom{
 text-align:center;
-margin-top:15px;
-font-size:12px;
+margin-top:20px;
+font-size:13px;
 color:#aaa;
 }
 
-/* ===== DESKTOP ===== */
+/* ===== MOBILE ===== */
 
-@media(min-width:768px){
+@media(max-width:900px){
 
-.hero h1{
-font-size:48px;
+.hero{
+flex-direction:column;
+text-align:center;
+padding-top:80px;
 }
 
-.products{
-grid-template-columns:repeat(3,1fr);
+.hero-text h1{
+font-size:36px;
 }
 
-footer .footer-grid{
-grid-template-columns:repeat(4,1fr);
+.hero img{
+margin-top:30px;
+}
+
+.nav-links{
+display:none;
 }
 
 }
@@ -238,8 +283,8 @@ grid-template-columns:repeat(4,1fr);
 <a href="#">Contact</a>
 </div>
 
-<div class="cart-btn" onclick="toggleCart()">
-Cart (<span id="count">0</span>)
+<div class="cart-btn">
+Cart
 </div>
 
 </nav>
@@ -248,34 +293,114 @@ Cart (<span id="count">0</span>)
 
 <section class="hero">
 
-<h1>Studio Trend</h1>
-<p>Premium fashion & tech store</p>
+<div class="hero-text">
 
-<button onclick="scrollShop()">Shop Now</button>
+<h1>Upgrade Your Style</h1>
+
+<p>Discover premium fashion and tech accessories with modern design.</p>
+
+<button>Shop Now</button>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="feature">
+<h3>Free Shipping</h3>
+<p>On all orders above ₹999</p>
+</div>
+
+<div class="feature">
+<h3>Secure Payment</h3>
+<p>100% secure payment</p>
+</div>
+
+<div class="feature">
+<h3>Fast Delivery</h3>
+<p>Delivery within 3-5 days</p>
+</div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+<h2 style="text-align:center;margin-bottom:30px;">Categories</h2>
+
+<div class="category-grid">
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+<h3>Shoes</h3>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>Laptops</h3>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1518441902111-a6c8f4e9e3f1">
+<h3>Headphones</h3>
+</div>
+
+</div>
 
 </section>
 
 <!-- PRODUCTS -->
 
-<section id="shop">
+<section class="products-section">
 
-<h2 style="text-align:center;margin-bottom:20px;">Trending Products</h2>
+<h2 style="text-align:center;margin-bottom:30px;">Trending Products</h2>
 
-<div class="products" id="products"></div>
+<div class="products">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+<h3>Running Shoes</h3>
+<p>₹3200</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b">
+<h3>Smart Watch</h3>
+<p>₹6000</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1518441902111-a6c8f4e9e3f1">
+<h3>Headphones</h3>
+<p>₹2500</p>
+<button>Add to Cart</button>
+</div>
+
+</div>
 
 </section>
 
-<!-- CART -->
+<!-- NEWSLETTER -->
 
-<div class="cart" id="cart">
+<section class="newsletter">
 
-<h2>Your Cart</h2>
+<h2>Subscribe for Updates</h2>
 
-<div id="cartItems"></div>
+<br>
 
-<h3>Total ₹<span id="total">0</span></h3>
+<input type="email" placeholder="Enter email">
 
-</div>
+<button>Subscribe</button>
+
+</section>
 
 <!-- FOOTER -->
 
@@ -285,7 +410,7 @@ Cart (<span id="count">0</span>)
 
 <div class="footer-col">
 <h3>Studio Trend</h3>
-<p style="font-size:13px;">Modern fashion and tech products.</p>
+<p>Modern fashion and tech store.</p>
 </div>
 
 <div class="footer-col">
@@ -317,100 +442,6 @@ Cart (<span id="count">0</span>)
 </div>
 
 </footer>
-
-<script>
-
-/* PRODUCTS */
-
-const products=[
-
-{id:1,name:"Running Shoes",price:3200,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff"},
-{id:2,name:"Headphones",price:2500,img:"https://images.unsplash.com/photo-1518441902111-a6c8f4e9e3f1"},
-{id:3,name:"Smart Watch",price:6000,img:"https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b"},
-{id:4,name:"Backpack",price:1800,img:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c"},
-{id:5,name:"Laptop",price:52000,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8"},
-{id:6,name:"Sunglasses",price:900,img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083"}
-
-]
-
-let cart=[]
-
-const container=document.getElementById("products")
-
-products.forEach(p=>{
-
-container.innerHTML+=`
-
-<div class="product">
-<img src="${p.img}">
-<h3>${p.name}</h3>
-<p>₹${p.price}</p>
-<button onclick="addCart(${p.id})">Add to Cart</button>
-</div>
-
-`
-
-})
-
-function addCart(id){
-
-const product=products.find(p=>p.id===id)
-
-cart.push(product)
-
-updateCart()
-
-}
-
-function updateCart(){
-
-const items=document.getElementById("cartItems")
-
-items.innerHTML=""
-
-let total=0
-
-cart.forEach((item,index)=>{
-
-total+=item.price
-
-items.innerHTML+=`
-
-<div class="cart-item">
-${item.name}
-<button onclick="removeItem(${index})">X</button>
-</div>
-
-`
-
-})
-
-document.getElementById("count").innerText=cart.length
-document.getElementById("total").innerText=total
-
-}
-
-function removeItem(index){
-
-cart.splice(index,1)
-
-updateCart()
-
-}
-
-function toggleCart(){
-
-document.getElementById("cart").classList.toggle("active")
-
-}
-
-function scrollShop(){
-
-document.getElementById("shop").scrollIntoView({behavior:"smooth"})
-
-}
-
-</script>
 
 </body>
 </html>
