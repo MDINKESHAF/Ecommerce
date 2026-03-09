@@ -3,20 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My E-Commerce Store</title>
+
+<title>MyShop E-Commerce</title>
 
 <style>
 
-/* GENERAL */
+/* RESET */
 
-body{
-font-family: Arial;
+*{
 margin:0;
-background:#f4f4f4;
-}
-
-h1,h2{
-text-align:center;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
 /* NAVBAR */
@@ -25,69 +23,125 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:#222;
+background:#111;
 color:white;
-padding:15px;
+padding:15px 40px;
+position:sticky;
+top:0;
 }
 
-nav a{
+nav h2{
+color:#ff9800;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
 color:white;
 text-decoration:none;
-margin:10px;
+font-size:16px;
 }
 
-.cart-icon{
-cursor:pointer;
-background:orange;
-padding:8px 15px;
+nav ul li a:hover{
+color:#ff9800;
+}
+
+.cart-btn{
+background:#ff9800;
+padding:8px 14px;
 border-radius:5px;
+cursor:pointer;
 }
 
-/* HERO SECTION */
+/* HERO */
 
 .hero{
-background:url("https://images.unsplash.com/photo-1607083206968-13611e3d76db") center/cover;
-height:300px;
+height:400px;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url("https://picsum.photos/1200/600");
+background-size:cover;
 display:flex;
-align-items:center;
+flex-direction:column;
 justify-content:center;
+align-items:center;
 color:white;
-font-size:40px;
-font-weight:bold;
+text-align:center;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.hero p{
+margin-top:10px;
+}
+
+/* SECTION */
+
+section{
+padding:50px 40px;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:30px;
+font-size:28px;
 }
 
 /* PRODUCTS */
 
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-padding:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
 .product{
 background:white;
 padding:15px;
 border-radius:10px;
-box-shadow:0 3px 10px rgba(0,0,0,0.2);
+box-shadow:0 3px 10px rgba(0,0,0,.2);
 text-align:center;
 }
 
 .product img{
 width:100%;
-height:180px;
+height:160px;
 object-fit:cover;
-border-radius:10px;
+border-radius:8px;
+}
+
+.product h3{
+margin:10px 0;
 }
 
 .product button{
 background:#28a745;
 color:white;
 border:none;
-padding:10px;
-margin-top:10px;
+padding:8px 15px;
 cursor:pointer;
 border-radius:5px;
+}
+
+/* ABOUT */
+
+.about{
+background:#f4f4f4;
+text-align:center;
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
 }
 
 /* CART */
@@ -99,7 +153,7 @@ top:0;
 width:300px;
 height:100%;
 background:white;
-box-shadow:-2px 0 10px rgba(0,0,0,0.3);
+box-shadow:-2px 0 10px rgba(0,0,0,.3);
 padding:20px;
 overflow:auto;
 display:none;
@@ -111,22 +165,13 @@ justify-content:space-between;
 margin:10px 0;
 }
 
-.cart button{
-background:red;
-color:white;
-border:none;
-padding:5px;
-cursor:pointer;
-}
-
 /* FOOTER */
 
 footer{
-background:#222;
+background:#111;
 color:white;
 text-align:center;
 padding:20px;
-margin-top:20px;
 }
 
 </style>
@@ -137,153 +182,174 @@ margin-top:20px;
 <!-- NAVBAR -->
 
 <nav>
-<div><b>MyShop</b></div>
 
-<div>
-<a href="#">Home</a>
-<a href="#">Products</a>
-<a href="#">Contact</a>
-</div>
+<h2>MyShop</h2>
 
-<div class="cart-icon" onclick="toggleCart()">
-Cart (<span id="cart-count">0</span>)
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="cart-btn" onclick="toggleCart()">
+Cart (<span id="count">0</span>)
 </div>
 
 </nav>
 
-<!-- HERO -->
+<!-- HOME -->
 
-<div class="hero">
-Big Sale Today
-</div>
+<section class="hero" id="home">
 
-<h2>Featured Products</h2>
+<h1>Welcome to MyShop</h1>
+<p>Best Deals on Electronics and Fashion</p>
+
+</section>
 
 <!-- PRODUCTS -->
 
-<div class="products" id="product-list"></div>
+<section id="products">
 
+<h2 class="section-title">Featured Products</h2>
 
-<!-- CART PANEL -->
+<div class="products" id="productList"></div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<h2 class="section-title">About Us</h2>
+
+<p>
+MyShop is an online store providing high quality electronics,
+fashion and accessories at affordable prices.
+</p>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2 class="section-title">Contact</h2>
+
+<p>Email: support@myshop.com</p>
+<p>Phone: +91 9876543210</p>
+
+</section>
+
+<!-- CART -->
 
 <div class="cart" id="cart">
 
 <h2>Your Cart</h2>
 
-<div id="cart-items"></div>
+<div id="cartItems"></div>
 
-<h3>Total: ₹<span id="cart-total">0</span></h3>
+<h3>Total: ₹<span id="total">0</span></h3>
 
 <button onclick="toggleCart()">Close</button>
 
 </div>
 
 <footer>
+
 <p>© 2026 MyShop E-Commerce Website</p>
+
 </footer>
 
 <script>
 
-/* PRODUCTS DATA */
+/* PRODUCTS */
 
-const products = [
-{id:1,name:"Laptop",price:50000,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8"},
-{id:2,name:"Smartphone",price:20000,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"},
-{id:3,name:"Headphones",price:3000,img:"https://images.unsplash.com/photo-1518441902111-a6c8f4e9e3f1"},
-{id:4,name:"Smart Watch",price:5000,img:"https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b"},
-{id:5,name:"Camera",price:25000,img:"https://images.unsplash.com/photo-1519183071298-a2962e402c43"},
-{id:6,name:"Shoes",price:2000,img:"https://images.unsplash.com/photo-1528701800489-20be3c1b9e89"},
-{id:7,name:"Backpack",price:1500,img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"},
-{id:8,name:"Gaming Mouse",price:1200,img:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7"}
-];
+const products=[
 
+{id:1,name:"Laptop",price:50000,img:"https://picsum.photos/200?1"},
+{id:2,name:"Smartphone",price:20000,img:"https://picsum.photos/200?2"},
+{id:3,name:"Headphones",price:3000,img:"https://picsum.photos/200?3"},
+{id:4,name:"Smart Watch",price:6000,img:"https://picsum.photos/200?4"},
+{id:5,name:"Camera",price:35000,img:"https://picsum.photos/200?5"},
+{id:6,name:"Shoes",price:2500,img:"https://picsum.photos/200?6"}
 
-/* CART */
+]
 
-let cart = [];
+let cart=[]
 
+const productList=document.getElementById("productList")
 
-/* DISPLAY PRODUCTS */
+products.forEach(p=>{
 
-const productList = document.getElementById("product-list");
+const div=document.createElement("div")
 
-products.forEach(product => {
+div.className="product"
 
-const div = document.createElement("div");
-div.classList.add("product");
+div.innerHTML=`
 
-div.innerHTML = `
-<img src="${product.img}">
-<h3>${product.name}</h3>
-<p>₹${product.price}</p>
-<button onclick="addToCart(${product.id})">Add to Cart</button>
-`;
+<img src="${p.img}">
+<h3>${p.name}</h3>
+<p>₹${p.price}</p>
+<button onclick="addCart(${p.id})">Add to Cart</button>
 
-productList.appendChild(div);
+`
 
-});
+productList.appendChild(div)
 
+})
 
-/* ADD TO CART */
+function addCart(id){
 
-function addToCart(id){
+const product=products.find(p=>p.id===id)
 
-const product = products.find(p=>p.id===id);
+cart.push(product)
 
-cart.push(product);
-
-updateCart();
+updateCart()
 
 }
-
-
-/* UPDATE CART */
 
 function updateCart(){
 
-const cartItems = document.getElementById("cart-items");
-cartItems.innerHTML="";
+const cartItems=document.getElementById("cartItems")
 
-let total = 0;
+cartItems.innerHTML=""
+
+let total=0
 
 cart.forEach((item,index)=>{
 
-total += item.price;
+total+=item.price
 
-cartItems.innerHTML += `
+cartItems.innerHTML+=`
 <div class="cart-item">
-${item.name} - ₹${item.price}
+${item.name} ₹${item.price}
 <button onclick="removeItem(${index})">X</button>
 </div>
-`;
+`
 
-});
+})
 
-document.getElementById("cart-total").innerText = total;
-document.getElementById("cart-count").innerText = cart.length;
+document.getElementById("total").innerText=total
+
+document.getElementById("count").innerText=cart.length
 
 }
-
-
-/* REMOVE ITEM */
 
 function removeItem(index){
 
-cart.splice(index,1);
+cart.splice(index,1)
 
-updateCart();
+updateCart()
 
 }
 
-
-/* TOGGLE CART */
-
 function toggleCart(){
 
-const cartPanel = document.getElementById("cart");
+const cart=document.getElementById("cart")
 
-cartPanel.style.display =
-cartPanel.style.display === "block" ? "none" : "block";
+cart.style.display=
+cart.style.display==="block"?"none":"block"
 
 }
 
